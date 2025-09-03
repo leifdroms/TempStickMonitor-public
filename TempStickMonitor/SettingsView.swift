@@ -43,7 +43,7 @@ struct SettingsView: View {
                     
                     if appModel.settings.useGlobalPolling {
                         Picker("Global Interval", selection: Binding(
-                            get: { appModel.settings.globalPollingInterval ?? 60.0 },
+                            get: { appModel.settings.globalPollingInterval ?? 600.0 },
                             set: { newValue in
                                 appModel.settings.globalPollingInterval = newValue
                             }

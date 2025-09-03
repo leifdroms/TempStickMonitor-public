@@ -50,7 +50,7 @@ class TempStickService: TempStickServiceProtocol {
     } else {
       let config = URLSessionConfiguration.default
       config.timeoutIntervalForRequest = 30.0
-      config.timeoutIntervalForResource = 60.0
+      config.timeoutIntervalForResource = 600.0
       self.session = URLSession(configuration: config)
     }
   }

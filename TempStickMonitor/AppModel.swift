@@ -134,7 +134,7 @@ deinit {
                 let config = SensorConfiguration(
                     sensorId: sensor.sensorId,
                     name: sensor.sensorName,
-                    pollingInterval: 60.0,
+                    pollingInterval: 600.0,
                     isEnabled: true,
                     temperatureUnit: settings.defaultTemperatureUnit
                 )

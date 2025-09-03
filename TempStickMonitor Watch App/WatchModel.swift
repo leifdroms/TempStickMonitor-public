@@ -121,7 +121,7 @@ class WatchModel {
 
         let interval =
           self?.settings.useGlobalPolling == true
-          ? (self?.settings.globalPollingInterval ?? 60.0) : 60.0
+          ? (self?.settings.globalPollingInterval ?? 600.0) : 600.0
 
         do {
           try await Task.sleep(for: .seconds(interval))

@@ -115,7 +115,7 @@ struct SensorConfiguration: Codable, Identifiable, Hashable {
         case temperatureUnit = "temperature_unit"
     }
     
-    init(sensorId: String, name: String, pollingInterval: TimeInterval = 60.0, isEnabled: Bool = true, temperatureUnit: TemperatureUnit = .fahrenheit) {
+    init(sensorId: String, name: String, pollingInterval: TimeInterval = 600.0, isEnabled: Bool = true, temperatureUnit: TemperatureUnit = .fahrenheit) {
         self.sensorId = sensorId
         self.name = name
         self.pollingInterval = pollingInterval
@@ -162,7 +162,7 @@ struct AppSettings: Codable {
     
     init() {
         self.apiKey = nil
-        self.globalPollingInterval = 60.0
+        self.globalPollingInterval = 600.0
         self.sensorConfigurations = []
         self.useGlobalPolling = false
         self.defaultTemperatureUnit = .fahrenheit
