@@ -22,7 +22,7 @@ This repository only contains the **source files** and assets — not the Xcode 
 4. In finder, copy the folder "TempStickMonitor Watch App" into Xcode, and when prompted check the box for the target with [your product name Watch App]. Leave other options default.
 
 > **Important Note:
-> Important Note: when copying the folders, make sure to copy to the top level directory in the project structure
+> When copying the folders, make sure to copy to the top level directory in the project structure
 > (e.g. do not copy the Watch App folder into the folder with the TempStickMonitor iOS app files copied in step 3 under this section)
 
 
