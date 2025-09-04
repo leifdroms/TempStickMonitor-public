@@ -2,6 +2,8 @@ import SwiftUI
 
 @Observable
 class WatchModel {
+  static let shared = WatchModel()
+
   var settings = AppSettings()
   var currentReadings: [String: TempStickReading] = [:]
   var isLoading = false
@@ -135,6 +137,28 @@ class WatchModel {
   func stopPolling() {
     pollingTask?.cancel()
     pollingTask = nil
+  }
+
+  func scheduleBackgroundRefresh() {
+
+    // Only consider enabled sensors
+    let enabledIntervals = settings.sensorConfigurations
+      .filter { $0.isEnabled }
+      .map { $0.pollingInterval }
+    // Default to e.g. 30 min if no sensors are enabled
+    let maxInterval = enabledIntervals.max() ?? 1800
+
+    let refreshDate = Date().addingTimeInterval(maxInterval)
+
+    // Option 1: Use nil if you don't need userInfo
+    WKExtension.shared().scheduleBackgroundRefresh(
+      withPreferredDate: refreshDate,
+      userInfo: nil
+    ) { error in
+      if let error = error {
+        print("Failed to schedule background refresh: \(error)")
+      }
+    }
   }
 
   @MainActor

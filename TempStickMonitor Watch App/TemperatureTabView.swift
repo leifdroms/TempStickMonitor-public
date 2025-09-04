@@ -10,7 +10,7 @@ struct TemperatureTabView: View {
       ForEach(watchModel.settings.sensorConfigurations) { config in
         if config.isEnabled {
           VStack {
-            
+
             Text(config.name)
               .font(.caption2)
 
@@ -27,21 +27,9 @@ struct TemperatureTabView: View {
     }
     .tabViewStyle(PageTabViewStyle())
     .onAppear {
-      scheduleBackgroundRefresh()
+      watchModel.scheduleBackgroundRefresh()
     }
   }
 
-  private func scheduleBackgroundRefresh() {
-    let refreshDate = Date().addingTimeInterval(15 * 60)
 
-    // Option 1: Use nil if you don't need userInfo
-    WKExtension.shared().scheduleBackgroundRefresh(
-      withPreferredDate: refreshDate,
-      userInfo: nil
-    ) { error in
-      if let error = error {
-        print("Failed to schedule background refresh: \(error)")
-      }
-    }
-  }
 }
